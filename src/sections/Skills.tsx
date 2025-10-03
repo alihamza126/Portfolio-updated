@@ -85,7 +85,7 @@ export default function SkillsSection() {
     return (
         <div className="relative skills min-h-screen">
             <div className=" block px-1 max-w-6xl mx-auto mt-16">
-                <TitleHeader title={'My Professional Skills'} sub={'🧳 What I know'} img={'/emojis/ghost.png'} />
+                <TitleHeader title={'Professional Skills'} sub={'🧳 What I know'} img={'/emojis/glasses.png'} />
                 <Blurlight className="-bottom-60 -left-0  opacity-10! w-1/4! h-96!" />
                 {/* <Blurlight className="-bottom-100 -right-0  opacity-5! w-full! h-96!" /> */}
                 {/* <Blurlight className="-bottom-100 -right-100  opacity-5! w-full! h-96!" /> */}

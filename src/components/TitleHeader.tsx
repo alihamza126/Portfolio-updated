@@ -35,7 +35,7 @@ const TitleHeader = ({ title, sub, img = null }) => {
       </div>
       <div>
         <h1 className="hero-title font-semibold text-3xl md:text-4xl flex items-center gap-2 text-center">
-          {title} {img && <Image alt={title} src={img} height={60} width={60} />}
+          {title} {img && <Image alt={title} src={img} height={70} width={60} />}
         </h1>
       </div>
 
