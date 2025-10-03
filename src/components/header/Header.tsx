@@ -8,19 +8,36 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from '@gsap/react'
 import { Tooltip } from '../anime/animated-tooltip'
 import ScrollDownHint from '../ScrollDownHint'
+import { useRef } from 'react'
 
 gsap.registerPlugin(ScrollTrigger);
-// gsap.registerPlugin(useGSAP);
 
 
 const Header = () => {
+    const sectionRef = useRef<HTMLDivElement>(null)
     useGSAP(() => {
         gsap.fromTo(
-            ".hero-text .center,.amine, h1,h2,h3,h4,h5,p,button",
-            { y: 50, opacity: 0 },
-            { y: 0, opacity: 1, stagger: 0.1, duration: .4, ease: "power1.inOut" }
-        );
-    }, []);
+            ".hero-text .hero, .center,.amine, h1,h2,h3,h4,h5,p,button",
+            { y: 100, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                stagger: 0.1,
+                duration: .4,
+                ease: "power1.inOut",
+                scrollTrigger: {
+                    trigger: ".hero-text .hero",   // element to watch
+                    start: "top 90%",         // when it enters viewport
+                    end: "top 80%",           // optional end point
+                    toggleActions: "play none none reverse", // play on enter, reverse on leave
+                    scrub: true,         // set true for debug
+                }
+            },
+
+        )
+    },
+        { scope: sectionRef }
+    );
 
     const words = [
         {
@@ -34,7 +51,7 @@ const Header = () => {
         },
     ];
     return (
-        <div className='w-full hero-text bg-cover md:h-screen relative'>
+        <div ref={sectionRef} className='hero w-full hero-text bg-cover md:h-screen relative'>
             <Blurlight className="top-0 -left-0  opacity-20! w-32 h-32" />
 
             {/* Hero Section */}

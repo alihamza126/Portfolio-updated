@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type Tab = {
     title: string;
@@ -36,11 +41,32 @@ export const Tabs = ({
 
     const [hovering, setHovering] = useState(false);
 
+    useGSAP(() => {
+        gsap.fromTo(".tabs", {
+            opacity: 0,
+            y: 100,
+        }, {
+            opacity: 1,
+            y: 0,
+            stagger: .5,
+            duration: 4,
+            yoyo: true,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                trigger: ".tabs",
+                start: "top 90%",
+                end: "top 50%",
+                scrub: true,
+                toggleActions:"play none none reverse", 
+            },
+        })
+    })
+
     return (
         <>
             <div
                 className={cn(
-                    "flex  bg-orange-400 mt-16 flex-wrap md:flex-row justify-center items-center gap-4 [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar md:max-w-full md:w-full",
+                    "flex tabs mt-16 flex-wrap md:flex-row justify-center items-center gap-4 [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar md:max-w-full md:w-full",
                     containerClassName
                 )}
             >
@@ -79,7 +105,7 @@ export const Tabs = ({
                 active={active}
                 key={active.value}
                 hovering={hovering}
-                className={cn("mt-32", contentClassName)}
+                className={cn("mt-16 tabs", contentClassName)}
             />
         </>
     );
@@ -100,7 +126,7 @@ export const FadeInDiv = ({
         return tab.value === tabs[0].value;
     };
     return (
-        <div className="relative w-full h-full">
+        <div className="relative flex justify-around  w-full h-full">
             {tabs.map((tab, idx) => (
                 <motion.div
                     key={tab.value}

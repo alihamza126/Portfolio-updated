@@ -20,7 +20,7 @@ const TitleHeader = ({ title, sub, img = null }) => {
         scrollTrigger: {
           trigger: ".hero-badge",   // element to watch
           start: "top 80%",         // when it enters viewport
-          end: "top 40%",           // optional end point
+          end: "top 80%",           // optional end point
           toggleActions: "play none none reverse", // play on enter, reverse on leave
           markers: false,           // set true for debug
         },

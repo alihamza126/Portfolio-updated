@@ -48,7 +48,7 @@ body {
    @apply fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-[100] transition-all duration-200 ease-in-out;
 
    &.scrolled {
-      @apply top-0 bg-white/5;
+      @apply top-0 bg-white/5 shadow-lg backdrop-blur-3xl;
    }
 
    &.not-scrolled {

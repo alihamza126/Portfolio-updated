@@ -19,21 +19,21 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-rows-2 grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2",
+        "grid items-center place-items-center space-y-3 grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ",
         className
       )}
     >
       {items.map((item, idx) => (
         <div
           key={item.title}
-          className="relative group block p-2 h-full w-full cursor-pointer"
+          className="relative flex justify-between group md:p-3 h-full w-fit cursor-pointer"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-teal-700  rounded-3xl"
+                className="absolute inset-0 md:top-3 md:left-3 h-40 md:h-42 w-44 md:w-48 bg-teal-700  rounded-2xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -41,11 +41,11 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card>
+          <Card className=" shrink flex items-center justify-center">
             <img
               src={item.image}
               alt={item.title}
-              className="h-10 w-10 object-contain mx-auto"
+              className=" h-20 md:h-24 w-20 md:w-24 object-contain mx-auto"
             />
             <CardTitle>{item.title}</CardTitle>
           </Card>
@@ -65,7 +65,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-3 bg-white/10! overflow-hidden bg-/70 border border-transparent  relative z-20 text-center",
+        "rounded-2xl h-40 md:h-42 w-44 md:w-48 wfull p-2 bg-white/10! overflow-hidden bg-/70 border border-transparent  relative z-20 text-center",
         className
       )}
     >

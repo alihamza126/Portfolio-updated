@@ -25,7 +25,9 @@ export default function AboutSection() {
         ease: "power3.inOut",
         scrollTrigger: {
           trigger: codeWindowRef.current,
-          start: "top 80%",
+          start: "top 90%",
+          end: "top 70%",
+          scrub: true,
         },
       })
 
@@ -34,8 +36,8 @@ export default function AboutSection() {
         x: -20,
         opacity: 0,
         duration: 0.3,
-        stagger: 0.15,
-        delay: 0.3,
+        stagger: 0.071,
+        delay: 0.1,
         ease: "power2.inOut",
         scrollTrigger: {
           trigger: codeWindowRef.current,
@@ -69,15 +71,15 @@ export default function AboutSection() {
     <div
       id="about-me"
       ref={sectionRef}
-      className="relative"
+      className="relative  px-3 max-w-screen overflow-y-visible"
     >
       <TitleHeader img={'/emojis/ghost.png'} title={"About"} sub={"✨ Know more about me"} />
       <Blurlight className="top-15 left-0  opacity-5!  h-full!  w-full!" />
       <Blurlight className="bottom-10 -left-0  opacity-10! w-56 h-56" />
-      <div className="mx-auto py-20 w-full max-w-screen md:max-w-7xl">
+      <div className="mx-auto py-20 w-full max-w-screen overflow-x-hidden md:max-w-7xl">
         <div className="grid gap-8 lg:grid-cols-2 items-center lg:gap-8">
           {/* Left Side - Code Editor Window */}
-          <div ref={codeWindowRef} className="flex max-w-screen px-2 overflow-auto pb-2 items-center">
+          <div ref={codeWindowRef} className="flex max-w-screen overflow-auto pb-2 items-center">
             <div className="w-full overflow-hidden rounded-2xl border border-white/20 bg-slate-950/50 shadow-2xl backdrop-blur-xl">
               {/* Editor Header */}
               <div className="flex items-center gap-2 border-b border-white/10 bg-slate-900/50 px-4 py-3">
@@ -122,73 +124,58 @@ export default function AboutSection() {
 
                   <div className="code-line flex gap-4">
                     <span className="text-white/40">5</span>
-                    <span className="pl-6 text-blue-300">experience:</span>
-                    <span className="text-orange-400"> 4</span>
-                    <span className="text-white">,</span>
+                    <span className="pl-6 text-blue-300">services:</span>
+                    <span className="text-white"> [</span>
                   </div>
 
                   <div className="code-line flex gap-4">
                     <span className="text-white/40">6</span>
-                    <span className="pl-6 text-blue-300">skills:</span>
-                    <span className="text-white"> [</span>
+                    <span className="pl-12 text-emerald-400">&quot;Web App Development&quot;</span><span className="text-white">,</span>
                   </div>
-
-                  {/* First Row of Skills */}
                   <div className="code-line flex gap-4">
                     <span className="text-white/40">7</span>
-                    <span className="pl-12 text-emerald-400">&quot;React&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;Next.js&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;Node.js&quot;</span><span className="text-white">,</span>
+                    <span className="pl-12 text-emerald-400">&quot;AI-Powered Solutions&quot;</span><span className="text-white">,</span>
                   </div>
-
-                  {/* Second Row */}
                   <div className="code-line flex gap-4">
                     <span className="text-white/40">8</span>
-                    <span className="pl-12 text-emerald-400">&quot;TypeScript&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;MongoDB&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;Firebase&quot;</span><span className="text-white">,</span>
+                    <span className="pl-12 text-emerald-400">&quot;API Development & Integration&quot;</span><span className="text-white">,</span>
                   </div>
-
-                  {/* Third Row */}
                   <div className="code-line flex gap-4">
                     <span className="text-white/40">9</span>
-                    <span className="pl-12 text-emerald-400">&quot;Python&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;Django&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;Rest Api's&quot;</span><span className="text-white">,</span>
+                    <span className="pl-12 text-emerald-400">&quot;UI/UX Design&quot;</span>
                   </div>
 
-                  {/* Fourth Row */}
                   <div className="code-line flex gap-4">
                     <span className="text-white/40">10</span>
-                    <span className="pl-12 text-emerald-400">&quot;UI/UX Design&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;TailwindCSS&quot;</span><span className="text-white">,</span>
-                    <span className="text-emerald-400">&quot;Figma&quot;</span>
-                  </div>
-
-                  <div className="code-line flex gap-4">
-                    <span className="text-white/40">11</span>
                     <span className="pl-6 text-white">],</span>
                   </div>
 
                   <div className="code-line flex gap-4">
-                    <span className="text-white/40">12</span>
-                    <span className="pl-6 text-blue-300">passion:</span>
-                    <span className="text-emerald-400">&quot;Building scalable apps&quot;</span>
+                    <span className="text-white/40">11</span>
+                    <span className="pl-6 text-blue-300">about:</span>
+                    <span className="text-emerald-400">
+                      &quot;I am a Computer Science graduate with
+                      <span className="text-white/80 font-semibold"> 2+ years of freelancing experience</span>.
+                      I build scalable web apps with modern UI/UX and integrate AI-driven solutions.&quot;
+                    </span>
                     <span className="text-white">,</span>
                   </div>
 
+
                   <div className="code-line flex gap-4">
-                    <span className="text-white/40">13</span>
+                    <span className="text-white/40">12</span>
                     <span className="pl-6 text-blue-300">available:</span>
                     <span className="text-orange-400"> true</span>
                   </div>
 
                   <div className="code-line flex gap-4">
-                    <span className="text-white/40">14</span>
+                    <span className="text-white/40">13</span>
                     <span className="text-white">{"}"}</span>
                   </div>
                 </div>
               </div>
+
+
 
             </div>
           </div>

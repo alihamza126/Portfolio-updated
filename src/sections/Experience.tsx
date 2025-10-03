@@ -50,18 +50,20 @@ export default function Experience() {
     useGSAP(() => {
         gsap.fromTo(
             ".exp-card",
-            { y: 30, opacity: 0 },
+            { y: 100, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
                 duration: .41,
+                delay: .2,
                 ease: "power3.inOut",
                 scrollTrigger: {
                     trigger: ".exp-card",   // element to watch
-                    // start: "top 70%",         // when it enters viewport
-                    // end: "top 20%",           // optional end point
+                    start: "top 95%",         // when it enters viewport
+                    end: "top 70%",           // optional end point
                     toggleActions: "play none none reverse", // play on enter, reverse on leave
-                    markers: false,           // set true for debug
+                    markers: false,  
+                    scrub: true,         // set true for debug
                 },
             }
         )
