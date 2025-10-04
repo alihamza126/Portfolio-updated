@@ -19,21 +19,21 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        "grid items-center place-items-center space-y-3 grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ",
+        "grid  px-2 gap-2 md:gap-0 justify-items-center gap-y-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-5 ",
         className
       )}
     >
       {items.map((item, idx) => (
         <div
           key={item.title}
-          className="relative flex justify-between group md:p-3 h-full w-fit cursor-pointer"
+          className="relative flex justify-between group md:p-3 h-full w-full cursor-pointer"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 md:top-3 md:left-3 h-40 md:h-42 w-44 md:w-48 bg-teal-700  rounded-2xl"
+                className="absolute inset-0 md:top-3 md:left-3 h-full md:h-42  w-full md:w-48 bg-teal-700  rounded-2xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -41,11 +41,11 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card className=" shrink flex items-center justify-center">
+          <Card className="items-center justify-center">
             <img
               src={item.image}
               alt={item.title}
-              className=" h-20 md:h-24 w-20 md:w-24 object-contain mx-auto"
+              className=" h-20 w-20 md:h-24  md:w-24 object-contain mx-auto"
             />
             <CardTitle>{item.title}</CardTitle>
           </Card>
@@ -65,11 +65,11 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-40 md:h-42 w-44 md:w-48 wfull p-2 bg-white/10! overflow-hidden bg-/70 border border-transparent  relative z-20 text-center",
+        "rounded-2xl flex  items-center  h-40 w-full md:h-42  md:w-48 wfull p-2 md:p-4 bg-white/10! overflow-hidden bg-/70 border border-transparent  relative z-20 text-center",
         className
       )}
     >
-      <div className="relative z-50 flex flex-col items-center justify-center gap-4">
+      <div className="relative w-full z-50 flex flex-col items-center justify-center gap-4">
         {children}
       </div>
     </div>

@@ -71,7 +71,7 @@ export default function AboutSection() {
     <div
       id="about-me"
       ref={sectionRef}
-      className="relative  px-3 max-w-screen overflow-y-visible"
+      className="section relative px-3 max-w-screen overflow-y-visible"
     >
       <TitleHeader img={'/emojis/ghost.png'} title={"About"} sub={"✨ Know more about me"} />
       <Blurlight className="top-15 left-0  opacity-5!  h-full!  w-full!" />

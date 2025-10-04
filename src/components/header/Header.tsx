@@ -51,7 +51,7 @@ const Header = () => {
         },
     ];
     return (
-        <div ref={sectionRef} className='hero w-full hero-text bg-cover md:h-screen relative'>
+        <div id='home' ref={sectionRef} className='section hero w-full hero-text bg-cover md:h-screen relative'>
             <Blurlight className="top-0 -left-0  opacity-20! w-32 h-32" />
 
             {/* Hero Section */}

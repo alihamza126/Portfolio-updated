@@ -4,9 +4,6 @@ import { Tabs } from "@/components/anime/Tabs";
 import { HoverEffect } from "@/components/anime/HoverCard";
 import TitleHeader from "@/components/TitleHeader";
 import Blurlight from "@/components/blurlight";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
-
 
 export default function SkillsSection() {
     const tabs = [
@@ -22,8 +19,8 @@ export default function SkillsSection() {
                         { title: "React", image: "/tools/react.svg" },
                         { title: "Next.js", image: "/tools/nextjs.svg" },
                         { title: "Tailwind CSS", image: "/tools/tailwindcss.svg" },
+                        { title: "Figma", image: "/tools/figma.svg" },
                         { title: "Ant Design", image: "/tools/AntDesign.svg" },
-                        { title: "Figma", image: "/tools/Figma.svg" },
                         { title: "TypeScript", image: "/tools/typescript.svg" },
                     ]}
                 />
@@ -77,14 +74,26 @@ export default function SkillsSection() {
                     ]}
                 />
             ),
-        }
+        },
+        {
+            title: "Others",
+            value: "others",
+            content: (
+                <HoverEffect
+                    items={[
+                        { title: "SEO", image: "/tools/git.svg" },
+                        { title: "Wordpress websites", image: "/tools/docker.svg" },
+                    ]}
+                />
+            ),
+        },
     ];
 
-    
+
 
     return (
-        <div className="relative skills min-h-screen">
-            <div className=" block px-1 max-w-6xl mx-auto mt-16">
+        <div id='skills' className="section relative skills ">
+            <div className=" block  px-1 max-w-6xl  mx-auto md:mt-16">
                 <TitleHeader title={'Professional Skills'} sub={'🧳 What I know'} img={'/emojis/glasses.png'} />
                 <Blurlight className="-bottom-60 -left-0  opacity-10! w-1/4! h-96!" />
                 {/* <Blurlight className="-bottom-100 -right-0  opacity-5! w-full! h-96!" /> */}

@@ -54,13 +54,13 @@ export default function Experience() {
             {
                 y: 0,
                 opacity: 1,
-                duration: .41,
-                delay: .2,
+                duration: .81,
+                delay: .4,
                 ease: "power3.inOut",
                 scrollTrigger: {
                     trigger: ".exp-card",   // element to watch
-                    start: "top 95%",         // when it enters viewport
-                    end: "top 70%",           // optional end point
+                    start: "top 90%",         // when it enters viewport
+                    end: "top 80%",           // optional end point
                     toggleActions: "play none none reverse", // play on enter, reverse on leave
                     markers: false,  
                     scrub: true,         // set true for debug
@@ -70,11 +70,11 @@ export default function Experience() {
     })
 
     return (
-        <section className="w-full px-6 md:px-12 relative ">
-            <TitleHeader title="Experience" sub="✈️ My Journey" img={'/emojis/cowboy.png'} />
+        <section id='experience' className="section w-full mt-16 px-6 md:px-12 relative ">
+            <TitleHeader title="Work Experience" sub="✈️ My Journey" img={'/emojis/cowboy.png'} />
             <Blurlight className="-bottom-0 left-0  opacity-5!  h-full!  w-full!" />
             <Blurlight className="bottom-10 -right-0  opacity-5! w-56 h-56" />
-            <div className="max-w-6xl mx-auto pt-20">
+            <div className="max-w-6xl mx-auto pt-12">
                 <div className="grid md:grid-cols-2 gap-8">
                     {experiences.map((exp, i) => (
                         <div

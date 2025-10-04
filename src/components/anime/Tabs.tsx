@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import { useGSAP } from "@gsap/react";
@@ -57,7 +57,7 @@ export const Tabs = ({
                 start: "top 90%",
                 end: "top 50%",
                 scrub: true,
-                toggleActions:"play none none reverse", 
+                toggleActions: "play none none reverse",
             },
         })
     })
@@ -114,6 +114,7 @@ export const Tabs = ({
 export const FadeInDiv = ({
     className,
     tabs,
+    active,
     hovering,
 }: {
     className?: string;
@@ -125,25 +126,54 @@ export const FadeInDiv = ({
     const isActive = (tab: Tab) => {
         return tab.value === tabs[0].value;
     };
+
+    const contentContainerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (contentContainerRef.current) {
+            // 1. Target the *children* of the div containing the HoverEffect content.
+            //    The selector targets the direct children of the HoverEffect grid.
+            const cardElements = contentContainerRef.current.querySelector('.grid')?.children;
+
+            if (cardElements) {
+                gsap.fromTo(cardElements,
+                    {
+                        opacity: 0,
+                        y: 30, // Start lower for a more noticeable "fly-in" effect
+                        scale: 0.95 // Start slightly smaller
+                    },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1, // End at full size
+                        duration: 0.4, // Faster animation per card
+                        ease: "back.out(1.2)", // Use a fun "back" ease for a slight overshoot
+                        // 2. Add stagger for a dynamic grid flow
+                        stagger: {
+                            amount: 0.16, // Total time for all items to start animating
+                            from: "random", // Make cards fly in from a random order
+                            // Or use "grid" for a more structured cascade (e.g., "start", "end")
+                        },
+                        delay: 0.091 // Small initial delay
+                    }
+                );
+            }
+        }
+    }, [tabs[0].value]);
+
     return (
-        <div className="relative flex justify-around  w-full h-full">
+        // 3. Keep the ref on the container div
+        <div
+            ref={contentContainerRef}
+            className={cn("relative ", className)}
+        >
             {tabs.map((tab, idx) => (
-                <motion.div
-                    key={tab.value}
-                    layoutId={tab.value}
-                    style={{
-                        scale: 1 - idx * 0.1,
-                        top: hovering ? idx * -50 : 0,
-                        zIndex: -idx,
-                        opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-                    }}
-                    animate={{
-                        y: isActive(tab) ? [0, 40, 0] : 0,
-                    }}
-                    className={cn("w-full h-full absolute top-0 left-0", className)}
-                >
-                    {tab.content}
-                </motion.div>
+                <div key={tab.value}>
+                    {isActive(tab) && (
+                        // tab.content is the HoverEffect component, which renders a grid of cards
+                        tab.content
+                    )}
+                </div>
             ))}
         </div>
     );
